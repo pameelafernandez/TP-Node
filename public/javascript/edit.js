@@ -14,6 +14,6 @@ $.ajax(`/api/users/${id}`).done(function(user){
     $email.val(user.email);
 });
 
-$('form button').click(function () {
-    $.ajax(``)
-});
+//$('form button').click(function () {
+  //  $.ajax(``)
+//});

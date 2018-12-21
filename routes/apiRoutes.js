@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 //const path = require('path');
 
+let contador = 4;
+
 const users = [
     {
       id: 1,
@@ -23,6 +25,21 @@ router.get('/users', (req, res) => {
     res.json(users);
 });
 
+router.post('/users', function (req, res) {
+    // la info que me llega desde la web
+    const newUser = req.body;
+
+    if (newUser.nombre.length > 30){
+        return res.status(400).end('exediste los 30 caracteres');
+    };
+    // le  agrego un id al objeto
+    newUser.id = contador++;
+    // agrego el usuario al array global
+    users.push(newUser);
+    // le respondemos al usuario con el array de objetos
+    res.json(users);
+});
+
 router.put('/users/:id', (req, res) => {
     const user = user.find(t => t.id === parseInt(req.params));
     user.nombre = req.body.nombre || user.nombre;
@@ -31,6 +48,8 @@ router.put('/users/:id', (req, res) => {
     user.telefono = req.body.telefono || user.telefono;
     res.json(users);
 });
+
+
 
 router.delete('/users/:id', (req, res) =>{
     console.log('id del usuario que recibo', req.params.id)
