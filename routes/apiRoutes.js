@@ -1,8 +1,11 @@
+// Me traigo express
 const express = require('express');
-const router = express.Router();
-//const path = require('path');
 
-let contador = 4;
+// Le pido a express el Router
+const router = express.Router();
+
+// Contador para incrementar IDs
+let contador = 3;
 
 const users = [
     {
@@ -21,37 +24,36 @@ const users = [
     }
 ];
 
-router.get('/users', (req, res) => {
+// Mis Rutas
+router.get('/users', (req, res) => { // Le respondo al usuario con el array de objetos existente
     res.json(users);
 });
 
-router.post('/users', function (req, res) {
-    // la info que me llega desde la web
+router.post('/users', function (req, res) { // Agrego usurarios al array
+    // La información que me llega desde la web
     const newUser = req.body;
 
     if (newUser.nombre.length > 30){
         return res.status(400).end('exediste los 30 caracteres');
     };
-    // le  agrego un id al objeto
+    // Le  agrego un ID al objeto
     newUser.id = contador++;
-    // agrego el usuario al array global
+    // Agrego el usuario al array global
     users.push(newUser);
-    // le respondemos al usuario con el array de objetos
+    // Le respondemos al usuario con el array de objetos
     res.json(users);
 });
 
-router.put('/users/:id', (req, res) => {
-    const user = user.find(t => t.id === parseInt(req.params));
-    user.nombre = req.body.nombre || user.nombre;
-    user.apellido = req.body.apellido || user.apellido;
-    user.email = req.body.email || user.email;
-    user.telefono = req.body.telefono || user.telefono;
-    res.json(users);
-});
+//router.put('/users/:id', (req, res) => {
+    //const user = user.find(t => t.id === parseInt(req.params));
+    //user.nombre = req.body.nombre || user.nombre;
+    //user.apellido = req.body.apellido || user.apellido;
+    //user.email = req.body.email || user.email;
+    //user.telefono = req.body.telefono || user.telefono;
+    //res.json(users);
+//});
 
-
-
-router.delete('/users/:id', (req, res) =>{
+router.delete('/users/:id', (req, res) =>{ //Borra usuarios del array
     console.log('id del usuario que recibo', req.params.id)
     //1) agarro el ID que recibí por parametros
     //req.params.id => lo que recibo en formato STRING
@@ -65,8 +67,8 @@ router.delete('/users/:id', (req, res) =>{
     res.json(users);
 });
 
-router.get("/users/:id", (req, res) => {
-    // 0) Recupero el parametro id
+router.get("/users/:id", (req, res) => { // Filtro usuarios por ID
+    // 0) Recupero el parametro ID
     const userId = parseInt(req.params.id);
     // 1) findIndex
     // const userIndex = users.findIndex(user => user.id === userId)
@@ -77,9 +79,5 @@ router.get("/users/:id", (req, res) => {
     const user = users.find(user => user.id === userId);
     res.json(user);
 });
-
-//router.get("/users/new", (req, res) => {
-//});
-
 
 module.exports = router;

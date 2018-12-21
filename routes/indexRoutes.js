@@ -1,9 +1,20 @@
+// Primero me traigo express
 const express = require('express');
+
+// Le pido a express el Router 
 const router = express.Router();
+
+// Me traigo el módulo path
 const path = require('path');
 
+
+// Mis Rutas
 router.get('/estaspensandolomismoqueyobananin', (req, res) => {
-    res.send('Claro que si Bananón')
+    res.send('Claro que si Bananón');
+});
+
+router.get('ping', (req, res) => {
+    res.send('pong');
 });
 
 router.get('/users', (req, res) => {
