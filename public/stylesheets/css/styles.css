@@ -7,11 +7,13 @@ body h1 {
 }
 body form {
   width: 50%;
-  height: 450px;
+  height: auto;
+  padding: 2%;
   margin: auto;
   background-color: #fff;
   text-align: center;
   border-radius: 25px;
+  margin-bottom: 20px;
 }
 body form label {
   font-size: 25px;
@@ -22,11 +24,25 @@ body form input {
   margin-bottom: 15px;
 }
 body button {
+  width: 25%;
   padding: 15px;
   border-radius: 5px;
   border-style: none;
   background-color: navajowhite;
   color: #fff;
+}
+body table {
+  width: 70%;
+  padding: 2%;
+  margin: auto;
+  border-radius: 25px;
+  background-color: #fff;
+}
+body table button {
+  width: 100px;
+  padding: 15px;
+  border-radius: 5px;
+  border-style: none;
 }
 
 /*# sourceMappingURL=styles.css.map */

@@ -16,6 +16,23 @@ $.ajax(`/api/users/${id}`).done(function(user){
     $email.val(user.email);
 });
 
-//$('form button').click(function () {
-  //  $.ajax(``)
-//});
+$('form button').click(function () {
+    // Creamos el nuevo objeto, tomando el val() de cada input
+    // Hay que validar y hacer el PUT
+    const usuarioEdit = {
+      nombre: $nombre.val(),
+      apellido: $apellido.val(),
+      telefono: $telefono.val(),
+      email: $email.val()
+    };
+    $.ajax('http://localhost:3003/api/users/' + id, {
+      method: 'PUT',
+      data: usuarioEdit
+    }).done(function () {
+      alert('Usuario Editado');
+      location.href = '/users';
+  }).fail(function (err) {
+      alert('Salió todo mal')
+  });
+
+});

@@ -13,7 +13,7 @@ router.get('/estaspensandolomismoqueyobananin', (req, res) => {
     res.send('Claro que si Bananón');
 });
 
-router.get('ping', (req, res) => {
+router.get('/ping', (req, res) => {
     res.send('pong');
 });
 

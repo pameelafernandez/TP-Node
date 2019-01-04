@@ -18,7 +18,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.static(path.join(__dirname, './public')));
+app.use(express.static(path.join(__dirname, '/public')));
 
 // Le digo a mi servidor que cuando el cliente haga una petición vaya a buscar la ruta correspondiente
 app.use('/', indexRoutes);
