@@ -54,7 +54,7 @@ $('#filtrar').click(function (){
 
     $.ajax('/api/users?search=' + $search)
     .done(function(data) {
-        $('table tr .fila-usuario').remove();
+        $('tr').remove();
         armarTabla(data);
     }).fail(function(){
         alert('Algo salió mal')
