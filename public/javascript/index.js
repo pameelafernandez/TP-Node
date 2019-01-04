@@ -33,13 +33,13 @@ $(document).on("click", ".btn.edit", function() {
     location.href = `/users/edit?id=${id}`;
   });
 
-$(document).on("click", ".btn.delete", function() {
+$(document).on("click", ".btn.delete", function () {
     const id = $(this)
       .parent()
       .parent()
       .data("id");
 
-    $.ajax(`/api/users/${id}`, { method: "delete" }).done(function (){
+    $.ajax(`/api/users/${id}`, { method: "delete" }).done( () => {
         $(this)
             .parent()
             .parent()
